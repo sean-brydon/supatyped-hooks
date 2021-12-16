@@ -7,13 +7,12 @@
     "test": "test"
   },
   "bin": {
-    "supatyped": "dist/bin/schemats.js"
+    "supatyped": "dist/bin/supatyped.js"
   },
   "scripts": {
     "prebuild": "npm run lint",
     "build": "tsc",
-    "lint": "xo",
-    "dev": "ts-node ./cli/entry.ts"
+    "lint": "xo"
   },
   "author": "",
   "license": "ISC",
