@@ -1,0 +1,31 @@
+{
+  "name": "supatyped-hooks",
+  "version": "1.0.0",
+  "description": "Automatically genere react hooks that are fully typed",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "bin": {
+    "supatyped": "dist/bin/schemats.js"
+  },
+  "scripts": {
+    "prebuild": "npm run lint",
+    "build": "tsc",
+    "lint": "xo",
+    "dev": "ts-node ./cli/entry.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/pg": "^8.6.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4",
+    "xo": "^0.47.0"
+  },
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "commander": "^8.3.0",
+    "pg": "^8.7.1"
+  }
+}
