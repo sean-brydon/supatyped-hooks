@@ -11,16 +11,14 @@
   },
   "scripts": {
     "prebuild": "npm run lint",
-    "build": "tsc",
-    "lint": "xo"
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/pg": "^8.6.1",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.4",
-    "xo": "^0.47.0"
+    "typescript": "^4.5.4"
   },
   "dependencies": {
     "chalk": "^5.0.0",
