@@ -43,7 +43,7 @@ export const udtNameToTSType = (
       if (allEnums[udtName]) {
         return `${udtName}`;
       }
-      console.log("[Error] Unknown type:", udtName);
+      console.log("[Error] Unknown type setting as 'any':", udtName);
 
       return `any`;
   }

@@ -28,14 +28,19 @@ program
     // TODO: Use Chalk to make this look prettier
     db.isReady()
       .then(async () => {
-        console.log("\n\n[Success]: Database connection established!");
+        console.log("\n[Success]: Database connection established!");
         // console.log(await db.getEnums());
         const generator = new Generator(db, config);
-        console.log("\n\n[Success]: Generator initialised!");
-        generator.generate();
+        console.log("[Success]: Generator initialised!");
+        await generator.generate();
+        console.log(
+          `[Success]: Types have been generated to ${config.output} !`
+        );
+        process.exit(0);
       })
       .catch((err) => {
         console.log(`[Error]: \n ${err}`);
+        process.exit(0);
       });
   });
 
