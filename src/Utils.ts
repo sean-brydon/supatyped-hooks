@@ -40,6 +40,11 @@ export const udtNameToTSType = (
     case "point":
       return "{ x: number, y: number }";
     default:
-      return "WIP-ENUM";
+      if (allEnums[udtName]) {
+        return `${udtName}`;
+      }
+      console.log("[Error] Unknown type:", udtName);
+
+      return `any`;
   }
 };

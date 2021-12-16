@@ -57,36 +57,31 @@ export class DatabaseConneciton implements Database {
     return res.rows.map((row) => row.table_name);
   }
 
-  public async getColumnsWithType(
-    table: string
-  ): Promise<Record<string, Column[]>> {
+  public async getColumnsWithType() {
     // Get table columns and data type from postgres
+    const tables: string[] = await this.getTables();
+    const schema: Record<string, Column[]> = {};
 
-    const res = await this.db.query<Column>(
-      `select column_name, udt_name as data_type from information_schema.columns where table_schema = '${this.config.schema}' and table_name = '${table}'`
+    await Promise.all(
+      tables.map(async (table) => {
+        const res = await this.db.query<Column>(
+          `select column_name, udt_name as data_type from information_schema.columns where table_schema = '${this.config.schema}' and table_name = '${table}'`
+        );
+
+        const enums = await this.getEnums();
+
+        res.rows.forEach((row) => {
+          if (!schema[table]) {
+            schema[table] = [];
+          }
+          schema[table].push({
+            column_name: row.column_name,
+            data_type: udtNameToTSType(row.data_type, enums),
+          });
+        });
+      })
     );
-    const enums = await this.getEnums();
-    let tableDefinition: Record<string, Column[]> = {};
-    res.rows.forEach((row) => {
-      if (!tableDefinition[table]) {
-        tableDefinition[table] = [];
-      }
-      tableDefinition[table].push({
-        column_name: row.column_name,
-        data_type: udtNameToTSType(row.data_type, enums),
-      });
-    });
 
-    return tableDefinition;
-  }
-
-  public async getSchemaDefinition(): Promise<Record<string, Column[]>[]> {
-    const tables = await this.getTables();
-    const schema: Record<string, Column[]>[] = [];
-
-    for (const table of tables) {
-      schema.push(await this.getColumnsWithType(table));
-    }
     return schema;
   }
 }
