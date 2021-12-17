@@ -10,7 +10,7 @@
   "directories": {
     "test": "test"
   },
-  "bin": "dist/bin/supatyped.js",
+  "bin": "dist/bin/cli.js",
   "scripts": {
     "prebuild": "npm run lint",
     "build": "tsc"
