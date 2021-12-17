@@ -1,6 +1,6 @@
 {
   "name": "supatyped-hooks",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Automatically genere react hooks that are fully typed",
   "main": "bin/index.js",
   "repository": {
