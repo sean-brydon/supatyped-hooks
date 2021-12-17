@@ -2,7 +2,7 @@
   "name": "supatyped-hooks",
   "version": "1.2.0",
   "description": "Automatically genere react hooks that are fully typed",
-  "main": "index.js",
+  "main": "bin/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/sean-brydon/supatyped-hooks"
