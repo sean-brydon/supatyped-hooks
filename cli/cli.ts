@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Generator } from "../src/Generator";
 import { DatabaseConneciton } from "../src/DatabaseConnection";
 import { Command } from "commander";
